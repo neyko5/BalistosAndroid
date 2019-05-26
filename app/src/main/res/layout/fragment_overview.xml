@@ -26,43 +26,37 @@
             name="viewModel"
             type="com.balistos.balistos.home.HomeViewModel" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.balistos.balistos.MainActivity">
 
         <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:text=""
                 android:ems="10"
                 android:hint="Search for playlist"
-                android:id="@+id/searchPlaylist" android:onTextChanged="@{viewModel.onTextChanged}"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/playlists"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchPlaylist"
-            app:listData="@{viewModel.properties}"
-            tools:listitem="@layout/playlist_item" />
+                android:id="@+id/searchPlaylist"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onTextChanged="@{viewModel.onTextChanged}"/>
 
-        <ImageView
-            android:id="@+id/status_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:marsApiStatus="@{viewModel.status}" />
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/playlists"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:padding="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/searchPlaylist"
+                    android:clipToPadding="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:listData="@{viewModel.properties}"
+                    tools:listitem="@layout/playlist_item"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
